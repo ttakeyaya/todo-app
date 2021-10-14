@@ -1,0 +1,56 @@
+/** 
+-Import Google Fonts and Define font variables
+-Define color varibalbes
+-Reset CSS properties(margin, padding)
+*/
+
+// Google Font
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+
+// Font variable
+$josefin: "Josefin Sans", sans-serif;
+
+// Colors
+:root {
+  --color-bright-blue: hsl(220, 98%, 61%);
+  --linear-gradient: linear-gradient(
+    to right,
+    hsl(192, 100%, 67%),
+    hsl(280, 87%, 65%)
+  );
+
+  --light-theme-gray: hsl(0, 0%, 98%);
+  --light-theme-blue: hsl(236, 33%, 92%);
+  --light-theme-grayish-blue: hsl(233, 11%, 84%);
+  --light-theme-dark-blue: hsl(236, 9%, 61%);
+  --light-theme-very-dark-blue: hsl(235, 19%, 35%);
+
+  --dark-theme-blue: hsl(235, 21%, 11%);
+  --dark-theme-dark-blue: hsl(235, 24%, 19%);
+  --dark-theme-grayish-blue: hsl(234, 39%, 85%);
+  --dark-theme-hover: hsl(236, 33%, 92%);
+  --dark-theme-grayish-blue-one: hsl(233, 14%, 35%);
+  --dark-theme-grayish-blue-two: hsl(237, 14%, 26%);
+}
+
+// Resetting
+* {
+  padding: 0;
+  margin: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.8rem;
+  font-family: $josefin;
+}
