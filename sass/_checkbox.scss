@@ -1,0 +1,83 @@
+/** Define the checkbox. 
+  This checkbox is used for todo list.
+*/
+.checkbox {
+  position: relative;
+  cursor: pointer;
+  input[type="checkbox"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+  }
+  input:checked ~ .circle {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../images/icon-check.svg"),
+      linear-gradient(to right, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    border: none;
+    &::before {
+      content: none;
+    }
+  }
+  .circle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-image: url("../images/icon-check.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: white;
+    border: 1px solid #e3e4f1;
+    border-radius: 50%;
+    top: -3px;
+    left: -29px;
+    background-clip: padding-box;
+    @media screen and (min-width: 580px) {
+      top: 0px;
+      left: -39px;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      top: 22px;
+      right: 22px;
+      z-index: 2;
+      margin: -20px;
+      border-radius: inherit;
+      background: white;
+    }
+    &:hover {
+      border: none;
+      background: white;
+      background-image: linear-gradient(
+        to right,
+        hsl(192, 100%, 67%),
+        hsl(280, 87%, 65%)
+      );
+    }
+  }
+}
+
+/**Define the checkbox for the theme switch.
+  
+The background image would be changed by JavaScript
+*/
+.theme-switch {
+  width: 2.5rem;
+  height: 2.6rem;
+  position: relative;
+  cursor: pointer;
+
+  input[type="checkbox"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+  }
+  .moon {
+    width: 2.5rem;
+    height: 2.6rem;
+    background-image: url("../images/icon-moon.svg");
+  }
+}

@@ -1,3 +1,368 @@
+/** 
+-Import Google Fonts and Define font variables
+-Define color varibalbes
+-Reset CSS properties(margin, padding)
+*/
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap");
+:root {
+  --color-bright-blue: hsl(220, 98%, 61%);
+  --color-white: white;
+  --light-theme-gray: hsl(0, 0%, 98%);
+  --light-theme-blue: hsl(236, 33%, 92%);
+  --light-theme-grayish-blue: hsl(233, 11%, 84%);
+  --light-theme-dark-blue: hsl(236, 9%, 61%);
+  --light-theme-very-dark-blue: hsl(235, 19%, 35%);
+  --dark-theme-blue: hsl(235, 21%, 11%);
+  --dark-theme-dark-blue: hsl(235, 24%, 19%);
+  --dark-theme-grayish-blue: hsl(234, 39%, 85%);
+  --dark-theme-hover: hsl(236, 33%, 92%);
+  --dark-theme-grayish-blue-one: hsl(233, 14%, 35%);
+  --dark-theme-grayish-blue-two: hsl(237, 14%, 26%);
+}
 
+* {
+  padding: 0;
+  margin: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.8rem;
+  font-family: "Josefin Sans", sans-serif;
+  background-color: var(--light-theme-blue);
+}
+
+.title {
+  color: var(--color-white);
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+}
+@media screen and (min-width: 580px) {
+  .title {
+    font-size: 4rem;
+  }
+}
+
+.text-m {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.text-bold-black {
+  color: var(--light-theme-very-dark-blue);
+  font-weight: 700;
+}
+
+.text-gray {
+  color: var(--light-theme-dark-blue);
+}
+
+.text-gray-blur {
+  color: var(--light-theme-dark-blue);
+}
+
+.text-small {
+  font-size: 1.2rem;
+}
+@media screen and (min-width: 580px) {
+  .text-small {
+    font-size: 1.4rem;
+  }
+}
+
+.text-list {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+@media screen and (min-width: 580px) {
+  .text-list {
+    font-size: 1.8rem;
+  }
+}
+
+.text-form {
+  font-size: 1.2rem;
+}
+@media screen and (min-width: 580px) {
+  .text-form {
+    font-size: 1.8rem;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 86vw;
+  padding: 5.2rem 0 4rem 0;
+  text-align: center;
+  margin: 0 auto;
+}
+@media screen and (min-width: 580px) {
+  .header {
+    width: 54rem;
+    padding: 7rem 0 4.8rem 0;
+  }
+}
+.header .hero-container {
+  position: absolute;
+  z-index: -5;
+  top: 0;
+  left: 0;
+  background: url("../images/bg-mobile-light.jpg");
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 27vh;
+  background-size: cover;
+}
+@media screen and (min-width: 580px) {
+  .header .hero-container {
+    background: url("../images/bg-desktop-light.jpg");
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 37vh;
+    background-size: cover;
+  }
+}
+
+.grid-form {
+  grid-area: form;
+}
+
+.grid-list {
+  grid-area: list;
+  margin-top: 1.6rem;
+}
+@media screen and (min-width: 580px) {
+  .grid-list {
+    margin-top: 2.4rem;
+  }
+}
+
+.grid-left {
+  grid-area: left;
+}
+
+.grid-clear {
+  grid-area: clear;
+  cursor: pointer;
+}
+
+.grid-search {
+  margin-top: 1.6rem;
+  margin-bottom: 4rem;
+  grid-area: search;
+  background-color: var(--color-white);
+}
+@media screen and (min-width: 580px) {
+  .grid-search {
+    margin: 0;
+  }
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main .todo-container {
+  display: grid;
+  grid-template-columns: 43vw 43vw;
+  grid-template-areas: "form form" "list list" "left clear" "search search";
+}
+@media screen and (min-width: 580px) {
+  .main .todo-container {
+    max-width: 540px;
+    grid-template-columns: repeat(3, 18rem);
+    grid-template-areas: "form form form" "list list list" "left search clear";
+  }
+}
+.main .todo__form {
+  position: relative;
+}
+.main .todo__form::before {
+  position: absolute;
+  content: "";
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--light-theme-grayish-blue);
+  border-radius: 50%;
+  top: 18px;
+  left: 11px;
+}
+.main .todo__form > input[type=text] {
+  width: 100%;
+  font-family: "Josefin Sans", sans-serif;
+  border-radius: 0.5rem;
+  padding: 2rem 2rem 2rem 4rem;
+  border: none;
+  outline: none;
+  caret-color: var(--color-bright-blue);
+}
+@media screen and (min-width: 580px) {
+  .main .todo__form > input[type=text] {
+    padding: 2rem 2rem 2rem 5rem;
+  }
+}
+.main .todo__content {
+  list-style-type: none;
+  background: white;
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+}
+.main .todo__content .item {
+  padding: 2rem 2rem 2rem 4rem;
+  border-bottom: 1px solid var(--light-theme-grayish-blue);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+@media screen and (min-width: 580px) {
+  .main .todo__content .item {
+    padding: 2rem 2rem 2rem 5rem;
+  }
+}
+.main .todo__info {
+  background-color: var(--dark-theme-dark-blue);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 86vw;
+  background-color: var(--color-white);
+  padding: 2rem 2rem 2rem 4rem;
+  border-radius: 0 0 0.5rem 0.5rem;
+}
+.main .todo__info > div {
+  display: flex;
+}
+.main .todo__info .clear-completed:hover {
+  color: var(--light-theme-very-dark-blue);
+}
+@media screen and (min-width: 580px) {
+  .main .todo__info {
+    width: 540px;
+  }
+}
+.main .todo__search {
+  display: flex;
+  justify-content: center;
+  height: 4.8rem;
+  align-items: center;
+  border-radius: 0.5rem;
+}
+.main .todo__search .search-container {
+  display: flex;
+  width: 60%;
+  max-width: 400px;
+  justify-content: space-between;
+}
+@media screen and (min-width: 580px) {
+  .main .todo__search .search-container {
+    width: 100%;
+  }
+}
+.main .todo__search .search-container .search__item {
+  cursor: pointer;
+}
+.main .todo__search .search-container .search__item:hover {
+  color: var(--light-theme-very-dark-blue);
+}
+@media screen and (min-width: 580px) {
+  .main .dragn {
+    margin-top: 4.9rem;
+  }
+}
+
+/** Define the checkbox. 
+  This checkbox is used for todo list.
+*/
+.checkbox {
+  position: relative;
+  cursor: pointer;
+}
+.checkbox input[type=checkbox] {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+.checkbox input:checked ~ .circle {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("../images/icon-check.svg"), linear-gradient(to right, #57ddff, #c058f3);
+  border: none;
+}
+.checkbox input:checked ~ .circle::before {
+  content: none;
+}
+.checkbox .circle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-image: url("../images/icon-check.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: white;
+  border: 1px solid #e3e4f1;
+  border-radius: 50%;
+  top: -3px;
+  left: -29px;
+  background-clip: padding-box;
+}
+@media screen and (min-width: 580px) {
+  .checkbox .circle {
+    top: 0px;
+    left: -39px;
+  }
+}
+.checkbox .circle::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  top: 22px;
+  right: 22px;
+  z-index: 2;
+  margin: -20px;
+  border-radius: inherit;
+  background: white;
+}
+.checkbox .circle:hover {
+  border: none;
+  background: white;
+  background-image: linear-gradient(to right, #57ddff, #c058f3);
+}
+
+/**Define the checkbox for the theme switch.
+
+The background image would be changed by JavaScript
+*/
+.theme-switch {
+  width: 2.5rem;
+  height: 2.6rem;
+  position: relative;
+  cursor: pointer;
+}
+.theme-switch input[type=checkbox] {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+.theme-switch .moon {
+  width: 2.5rem;
+  height: 2.6rem;
+  background-image: url("../images/icon-moon.svg");
+}
 
 /*# sourceMappingURL=main.css.map */

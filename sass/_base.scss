@@ -10,15 +10,16 @@
 // Font variable
 $josefin: "Josefin Sans", sans-serif;
 
+$bg-gradient: linear-gradient(
+  to right,
+  hsl(192, 100%, 67%),
+  hsl(280, 87%, 65%)
+);
 // Colors
 :root {
   --color-bright-blue: hsl(220, 98%, 61%);
-  --linear-gradient: linear-gradient(
-    to right,
-    hsl(192, 100%, 67%),
-    hsl(280, 87%, 65%)
-  );
 
+  --color-white: white;
   --light-theme-gray: hsl(0, 0%, 98%);
   --light-theme-blue: hsl(236, 33%, 92%);
   --light-theme-grayish-blue: hsl(233, 11%, 84%);
@@ -53,4 +54,5 @@ html {
 body {
   font-size: 1.8rem;
   font-family: $josefin;
+  background-color: var(--light-theme-blue);
 }

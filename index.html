@@ -6,25 +6,56 @@
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" href="css/main.css">
   <title>Frontend Mentor | Todo app</title>
-  <script defer src="js/app.js"></script>
+  <script defer src="js/app.js" type="module"></script>
   <style>
-    .attribution { font-size: 11px; text-align: center; }
+    .attribution { font-size: 11px; text-align: center; margin-top:50px}
     .attribution a { color: hsl(228, 45%, 44%); }
   </style>
 </head>
-<body>
-
-  Todo
-
-  <!-- Add dynamic number --> items left
-
-  All
-  Active 
-  Completed
-
-  Clear Completed
-
-  Drag and drop to reorder list
+<!-- dark -->
+<body class="dark-body">
+  <header class="header">
+    <!-- dark -->
+    <div class="hero-container dark-hero-container"></div>
+    <h1 class="title">
+      Todo
+    </h1>
+    <label for="theme-switch" class="theme-switch">
+      <input type="checkbox" id="theme-switch">
+      <div class="moon"></div>
+    </label>
+  </header>
+  <main class="main">
+    <section class="todo todo-container">
+      <form class="todo__form grid-form" id="todo-form">
+        <!-- dark -->
+        <input type="text" placeholder="Create a new todo..." class=" form__input text-form dark__input" name="userInput">
+      </form>
+      <ul class="todo__content grid-list dark-container" id="todo-list">
+        <!-- dark -->
+        
+        
+      </ul>
+      <!-- dark -->
+      <div class="todo__info dark-container">
+        <p class="text-gray text-small grid-left" id="item-left-message">4 items left</p>
+        <div class="grid-clear">
+          <p class="text-gray text-small clear-completed">Clear Completed</p>
+        </div>
+      </div>
+      
+      <!-- dark -->
+      <div class="todo__search grid-search dark-container">
+        <div class="search-container" id="search">
+          <p class="text-m text-gray-blur search__item">All</p>
+          <p class="text-m text-gray-blur search__item">Active</p>
+          <p class="text-m text-gray-blur search__item">Completed</p>
+        </div>
+      </div>
+    </section>
+    <!-- dark -->
+    <p class="text-m text-gray-blur dragn dark-blur-text">Drag and drop to reorder list</p>
+  </main>
 
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
