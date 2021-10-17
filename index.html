@@ -12,11 +12,10 @@
     .attribution a { color: hsl(228, 45%, 44%); }
   </style>
 </head>
-<!-- dark -->
-<body class="dark-body">
+
+<body>
   <header class="header">
-    <!-- dark -->
-    <div class="hero-container dark-hero-container"></div>
+    <div class="hero-container"></div>
     <h1 class="title">
       Todo
     </h1>
@@ -28,24 +27,21 @@
   <main class="main">
     <section class="todo todo-container">
       <form class="todo__form grid-form" id="todo-form">
-        <!-- dark -->
-        <input type="text" placeholder="Create a new todo..." class=" form__input text-form dark__input" name="userInput">
+        <input type="text" placeholder="Create a new todo..." class=" form__input text-form" name="userInput">
       </form>
-      <ul class="todo__content grid-list dark-container" id="todo-list">
-        <!-- dark -->
-        
-        
+      <ul class="todo__content grid-list" id="todo-list">
+        <!-- todo items are inserted here -->
       </ul>
-      <!-- dark -->
-      <div class="todo__info dark-container">
+      <div class="todo__info ">
         <p class="text-gray text-small grid-left" id="item-left-message">4 items left</p>
         <div class="grid-clear">
-          <p class="text-gray text-small clear-completed">Clear Completed</p>
+          <button class="clear-completed text-gray text-small" id="clear">
+            Clear Completed
+          </button>
         </div>
       </div>
       
-      <!-- dark -->
-      <div class="todo__search grid-search dark-container">
+      <div class="todo__search grid-search ">
         <div class="search-container" id="search">
           <p class="text-m text-gray-blur search__item">All</p>
           <p class="text-m text-gray-blur search__item">Active</p>
@@ -53,7 +49,7 @@
         </div>
       </div>
     </section>
-    <!-- dark -->
+
     <p class="text-m text-gray-blur dragn dark-blur-text">Drag and drop to reorder list</p>
   </main>
 

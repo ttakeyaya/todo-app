@@ -1,40 +1,102 @@
 import { Todo, TodoManager } from "./TodoManager.js";
+import {themeSwitch, changeCheckBoxTheme} from './ThemeSwitch.js';
+
 const themeSelector = document.getElementById('theme-switch');
 const themeImage = document.querySelector('.moon');
 const todoForm = document.getElementById('todo-form');
 const todoList = document.getElementById('todo-list');
 const itemLeftMessage = document.getElementById('item-left-message');
 const search = document.getElementById('search');
+const clearCompletedBtn = document.getElementById('clear');
 
+let theme = {
+  isLight: true,
+  isDark: false,
+  toggle: function(){
+    this.isLight = !this.isLight;
+    this.isDark = !this.isDark;
+  }
+};
 
 // 
 const Manager = new TodoManager();
 renderItemLeftMessage(Manager);
 
+// delete complted items as 'Clear Completed' btn is clicked
+clearCompletedBtn.addEventListener('click', (e)=>{
+  e.preventDefault();
+  clearTodoList();
+  // let activeItems = Manager.getActiveItems();
+  let completedItems = Manager.getCompletedItems();
+  completedItems.forEach(item => Manager.removeItembyKey(item.key));
+})
+
 // filter todos
 search.addEventListener('click', (e) =>{
   let searchTerm = e.target.innerText;
+  let currentTheme;
+  console.log(theme);
+  if(theme.isLight){
+    currentTheme = 'light';
+  }else{
+    currentTheme='dark';
+  }
   if(searchTerm == "All"){
     let items = Manager.getItems();
     clearTodoList();
     renderItems(items, todoList);
+    changeCheckBoxTheme(currentTheme);
   }else if(searchTerm == "Completed"){
     let items = Manager.getCompletedItems();
     clearTodoList();
     renderItems(items, todoList);
+    changeCheckBoxTheme(currentTheme);
   }else if(searchTerm == "Active"){
     let items = Manager.getActiveItems();
     clearTodoList();
     renderItems(items, todoList);
+    changeCheckBoxTheme(currentTheme);
   }
 })
+
+// add line-through + change the status of the todoitem
+todoList.addEventListener('click', (e)=>{
+  console.log(e);
+  let path = e.path || (e.composedPath && e.composedPath());
+  if(path){
+    if(e.target.type =="checkbox"){
+      if(e.target.checked){
+        let li = path[3];
+        li.classList.add('line-through');
+        let itemKey = li.dataset.key;
+        Manager.changeItemStatusByKey(itemKey);
+      }else{
+        let li = path[3];
+        li.classList.remove('line-through');
+        let itemKey = li.dataset.key;
+        Manager.changeItemStatusByKey(itemKey);
+      }
+    }else if(e){
+      let li = path[1];
+      let itemKey = li.dataset.key;
+      if(itemKey == undefined) return;
+      Manager.removeItembyKey(itemKey);
+      let items = Manager.getItems();
+      clearTodoList();
+      renderItems(items, todoList);
+    }
+  }else{
+    console.log('Hello');
+  }
+  
+});
 
 // create a todo item
 todoForm.addEventListener('submit',(e)=>{
   e.preventDefault();
   let userInput = todoForm.userInput.value;
   let item = new Todo(userInput);
-  Manager.add(item);
+  item = Manager.add(item);
   renderTodo(item, todoList);
   renderItemLeftMessage(Manager);
   todoForm.userInput.value="";
@@ -46,6 +108,7 @@ function clearTodoList(){
     todoList.removeChild(todoList.firstChild);
   }
 }
+
 function renderItemLeftMessage(manager){
   let num = manager.getNumberItemsLeft();
   switch(num){
@@ -59,65 +122,60 @@ function renderItemLeftMessage(manager){
       itemLeftMessage.innerText = `${num} items left`;
   }
 }
+
 function renderItems(items, itemContainer){
-  items.forEach(item => {
+  let sorted = items.sort(function(itemA, itemB){
+    return itemA.key - itemB.key
+  });
+  sorted.forEach(item => {
     renderTodo(item, itemContainer);
   });
+  renderItemLeftMessage(Manager);
 }
+
 function renderTodo(todoItem, itemContainer){
   const position = 'afterbegin';
   let itemHTML = `
-  <li class="item text-gray text-small dark-item" data-key=${todoItem.key}>
+  <li class="item text-gray text-small" data-key="${todoItem.key}">
     <div>
       <label class="checkbox">
-        <input type="checkbox">
+        <input type="checkbox" id="checkbox${todoItem.key}">
         <div class="circle">
-          <div class="circle__inner"></div>
         </div>
         <div class="base"></div>
       </label>
-      <!-- dark -->
-      <p class="text-list text-bold-bladark-text">${todoItem.content}</p>
+
+      <p class="text-list text-bold-bladark-text" id="todoItem${todoItem.key}">${todoItem.content}</p>
     </div>
     <img src="../images/icon-cross.svg" alt="cross the item">
   </li> 
   `;
   itemContainer.insertAdjacentHTML(position, itemHTML);
-}
-// 
-
-
-
-
-
-
-
-
-
-
-
-
-
-let theme = {
-  isLight: true,
-  isDark: false,
-};
-
-themeSelector.addEventListener('click', ()=>{
-  let isChecked = themeSelector.checked;
-  if(!isChecked && theme.isLight ){
-    themeImage.style.backgroundImage = "url('../../images/icon-moon.svg')";
-    
-    changeTheme('light');
+  if(todoItem.isCompleted){
+      const checkboxId = `checkbox${todoItem.key}`;
+      let checkbox = document.getElementById(checkboxId);
+      checkbox.checked = true;
+  }
+  let currentTheme;
+  if(theme.isLight){
+    currentTheme = 'light';
   }else{
-    themeImage.style.backgroundImage ="url('../../images/icon-sun.svg')"
-    
-    changeTheme('dark');
+    currentTheme='dark';
+  }
+  changeCheckBoxTheme(currentTheme);
+  renderItemLeftMessage(Manager);
+}
 
+// switch theme
+themeSelector.addEventListener('click', ()=>{
+  if(!theme.isLight ){
+    themeImage.style.backgroundImage = "url('../../images/icon-moon.svg')";
+    themeSwitch('light');
+    theme.toggle();
+
+  }else if(!theme.isDark){
+    themeImage.style.backgroundImage ="url('../../images/icon-sun.svg')"
+    themeSwitch('dark');
+    theme.toggle();
   }
 });
-
-function changeTheme(theme){
-  console.log(theme);
-
-}

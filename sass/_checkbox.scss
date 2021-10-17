@@ -8,6 +8,7 @@
     position: absolute;
     width: 0;
     height: 0;
+    display: none;
   }
   input:checked ~ .circle {
     background-repeat: no-repeat;
@@ -21,13 +22,14 @@
   }
   .circle {
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     background-image: url("../images/icon-check.svg");
     background-repeat: no-repeat;
     background-position: center;
-    background-color: white;
+    background: var(--color-white);
     border: 1px solid #e3e4f1;
+
     border-radius: 50%;
     top: -3px;
     left: -29px;
@@ -46,11 +48,11 @@
       z-index: 2;
       margin: -20px;
       border-radius: inherit;
-      background: white;
+      background-color: var(--color-white);
     }
     &:hover {
       border: none;
-      background: white;
+      background-color: var(--color-white);
       background-image: linear-gradient(
         to right,
         hsl(192, 100%, 67%),
@@ -74,6 +76,7 @@ The background image would be changed by JavaScript
     position: absolute;
     width: 0;
     height: 0;
+    display: none;
   }
   .moon {
     width: 2.5rem;

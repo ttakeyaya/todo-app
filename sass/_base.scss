@@ -56,3 +56,16 @@ body {
   font-family: $josefin;
   background-color: var(--light-theme-blue);
 }
+
+.line-through {
+  text-decoration: line-through;
+}
+.del {
+  border: none;
+  background: white;
+}
+.clear-completed {
+  border: none;
+  background: white;
+  font-family: $josefin;
+}

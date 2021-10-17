@@ -42,6 +42,21 @@ body {
   background-color: var(--light-theme-blue);
 }
 
+.line-through {
+  text-decoration: line-through;
+}
+
+.del {
+  border: none;
+  background: white;
+}
+
+.clear-completed {
+  border: none;
+  background: white;
+  font-family: "Josefin Sans", sans-serif;
+}
+
 .title {
   color: var(--color-white);
   text-transform: uppercase;
@@ -296,6 +311,7 @@ body {
   position: absolute;
   width: 0;
   height: 0;
+  display: none;
 }
 .checkbox input:checked ~ .circle {
   background-repeat: no-repeat;
@@ -308,12 +324,12 @@ body {
 }
 .checkbox .circle {
   position: absolute;
-  width: 20px;
-  height: 20px;
+  width: 22px;
+  height: 22px;
   background-image: url("../images/icon-check.svg");
   background-repeat: no-repeat;
   background-position: center;
-  background-color: white;
+  background: var(--color-white);
   border: 1px solid #e3e4f1;
   border-radius: 50%;
   top: -3px;
@@ -336,11 +352,11 @@ body {
   z-index: 2;
   margin: -20px;
   border-radius: inherit;
-  background: white;
+  background-color: var(--color-white);
 }
 .checkbox .circle:hover {
   border: none;
-  background: white;
+  background-color: var(--color-white);
   background-image: linear-gradient(to right, #57ddff, #c058f3);
 }
 
@@ -358,11 +374,70 @@ The background image would be changed by JavaScript
   position: absolute;
   width: 0;
   height: 0;
+  display: none;
 }
 .theme-switch .moon {
   width: 2.5rem;
   height: 2.6rem;
   background-image: url("../images/icon-moon.svg");
+}
+
+.dark-body {
+  background-color: var(--dark-theme-blue);
+}
+
+.hero-container.dark-hero-container {
+  background: url("../images/bg-mobile-dark.jpg");
+  background-repeat: no-repeat;
+  background-repeat: no-repeat;
+  width: 100vw;
+  height: 32vh;
+  background-size: cover;
+}
+@media screen and (min-width: 580px) {
+  .hero-container.dark-hero-container {
+    background: url("../images/bg-desktop-dark.jpg");
+    background-repeat: no-repeat;
+    background-repeat: no-repeat;
+    width: 100vw;
+    height: 37vh;
+    background-size: cover;
+  }
+}
+
+.dark__input {
+  background: var(--dark-theme-dark-blue);
+  color: white;
+}
+
+.dark-text {
+  color: var(--dark-theme-grayish-blue);
+}
+
+.dark-blur-text {
+  color: var(--dark-theme-grayish-blue-one);
+}
+
+.todo__info.dark-container {
+  background-color: var(--dark-theme-dark-blue);
+}
+
+.todo__search.dark-container {
+  background-color: var(--dark-theme-dark-blue);
+}
+
+.todo__content.dark-container {
+  background-color: var(--dark-theme-dark-blue);
+}
+
+.item.dark-item {
+  border-bottom: 1px solid red;
+}
+
+.dark-completed {
+  background: var(--dark-theme-dark-blue);
+  color: var(--dark-theme-grayish-blue-one);
+  font-family: "Josefin Sans", sans-serif;
 }
 
 /*# sourceMappingURL=main.css.map */
