@@ -262,6 +262,9 @@ body {
 .main .todo__info > div {
   display: flex;
 }
+.main .todo__info .clear-completed {
+  cursor: pointer;
+}
 .main .todo__info .clear-completed:hover {
   color: var(--light-theme-very-dark-blue);
 }
@@ -438,6 +441,9 @@ The background image would be changed by JavaScript
   background: var(--dark-theme-dark-blue);
   color: var(--dark-theme-grayish-blue-one);
   font-family: "Josefin Sans", sans-serif;
+}
+.dark-completed:hover {
+  color: white;
 }
 
 /*# sourceMappingURL=main.css.map */

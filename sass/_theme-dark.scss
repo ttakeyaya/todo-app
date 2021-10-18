@@ -54,4 +54,7 @@
   background: var(--dark-theme-dark-blue);
   color: var(--dark-theme-grayish-blue-one);
   font-family: $josefin;
+  &:hover {
+    color: white;
+  }
 }

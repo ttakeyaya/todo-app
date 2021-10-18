@@ -29,6 +29,7 @@ clearCompletedBtn.addEventListener('click', (e)=>{
   // let activeItems = Manager.getActiveItems();
   let completedItems = Manager.getCompletedItems();
   completedItems.forEach(item => Manager.removeItembyKey(item.key));
+  renderItemLeftMessage(Manager);
 })
 
 // filter todos
@@ -86,7 +87,7 @@ todoList.addEventListener('click', (e)=>{
       renderItems(items, todoList);
     }
   }else{
-    console.log('Hello');
+    
   }
   
 });
